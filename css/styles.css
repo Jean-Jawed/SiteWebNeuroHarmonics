@@ -1,0 +1,149 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+header {
+    background-color: #2196F3;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    height: 50px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin-right: 1rem;
+}
+
+nav ul li {
+    margin-left: 1rem;
+}
+
+nav ul li a {
+    background-color: white;
+    color: #2196F3;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+#language-toggle {
+    background-color: white;
+    color: #2196F3;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 1rem;
+}
+
+.hero, .features {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem;
+}
+
+.hero h2, .features h2 {
+    width: 100%;
+    font-family: 'Share Tech Mono', monospace;
+    text-align: center;
+}
+
+.image-container {
+    flex: 1;
+    min-width: 50%;
+    padding: 1rem;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+}
+
+.text-container {
+    flex: 1;
+    min-width: 50%;
+    padding: 1rem;
+}
+
+.features {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.features-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 80%;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.features ul li {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin: 0.5rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #2196F3;
+    color: #000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav ul {
+        margin-top: 1rem;
+        flex-direction: row;
+        justify-content: flex-end;
+        width: 100%;
+    }
+
+    nav ul li {
+        margin: 0 0.5rem;
+    }
+
+    #language-toggle {
+        margin-top: 1rem;
+        align-self: flex-end;
+    }
+
+    .image-container, .text-container {
+        min-width: 100%;
+    }
+}
+
+/* Import Share Tech Mono and Montserrat from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Montserrat:wght@400;700&display=swap');
