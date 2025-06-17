@@ -27,4 +27,16 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.error('Language toggle button not found');
     }
+    // Hamburger menu
+    const hamburger = document.querySelector('.hamburger');
+    const navUl = document.querySelector('nav ul');
+    if (hamburger && navUl) {
+        hamburger.addEventListener('click', function() {
+            navUl.classList.toggle('open');
+        });
+        // Optionally close menu when clicking a link
+        navUl.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navUl.classList.remove('open'));
+        });
+    }
 });

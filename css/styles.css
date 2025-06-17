@@ -64,6 +64,7 @@ nav ul li a {
     text-align: center;
 }
 
+/* Anciennes règles générales pour image-container et text-container */
 .image-container {
     flex: 1;
     min-width: 50%;
@@ -81,6 +82,96 @@ nav ul li a {
     padding: 1rem;
 }
 
+/* Spécifique à la page de confidentialité */
+.privacy-flex-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.privacy-flex-container .image-container {
+    flex: 0 0 30%;
+    max-width: 30%;
+    min-width: 180px;
+    padding: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.privacy-flex-container .image-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.privacy-flex-container .text-container {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 0;
+}
+
+
+/* Amélioration de la lisibilité pour la page de confidentialité */
+.privacy-flex-container .text-container p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 1.2em;
+    font-family: 'Montserrat', sans-serif;
+    color: #f5f5f5;
+}
+
+/* Titres de section (ex: Enfants, Sécurité, Modifications, Contactez-nous) */
+.privacy-flex-container .text-container p[data-fr="Enfants"],
+.privacy-flex-container .text-container p[data-fr="Sécurité"],
+.privacy-flex-container .text-container p[data-fr="Modifications"],
+.privacy-flex-container .text-container p[data-fr="Contactez-nous"],
+.privacy-flex-container .text-container p[data-en="Children"],
+.privacy-flex-container .text-container p[data-en="Security"],
+.privacy-flex-container .text-container p[data-en="Changes"],
+.privacy-flex-container .text-container p[data-en="Contact Us"] {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #2196F3;
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+    font-family: 'Share Tech Mono', monospace;
+    letter-spacing: 0.5px;
+}
+
+/* Questions (ex: "Quels sont mes droits de désabonnement ?") */
+.privacy-flex-container .text-container p[data-fr^="Quels sont"],
+.privacy-flex-container .text-container p[data-fr^="L'Application collecte-t-elle"],
+.privacy-flex-container .text-container p[data-fr^="Les tiers voient-ils"],
+.privacy-flex-container .text-container p[data-fr^="Quelles informations"],
+.privacy-flex-container .text-container p[data-en^="What information"],
+.privacy-flex-container .text-container p[data-en^="Does the Application collect"],
+.privacy-flex-container .text-container p[data-en^="Do third parties see"],
+.privacy-flex-container .text-container p[data-en^="What are my opt-out rights"] {
+    font-weight: bold;
+    color: #ffd600;
+    font-size: 1.1rem;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+/* Responsive: image au-dessus du texte sur mobile */
+@media (max-width: 900px) {
+    .privacy-flex-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .privacy-flex-container .image-container,
+    .privacy-flex-container .text-container {
+        max-width: 100%;
+        min-width: 0;
+    }
+}
+
+/* Features section */
 .features {
     padding: 2rem;
     display: flex;
@@ -142,6 +233,47 @@ footer {
 
     .image-container, .text-container {
         min-width: 100%;
+    }
+}
+
+/* ...existing code... */
+
+/* Hamburger caché sur desktop */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #fff;
+    position: absolute;
+    top: 1.2rem;
+    right: 1.5rem;
+    z-index: 1001;
+}
+
+/* Menu mobile */
+@media (max-width: 900px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        background: #2196F3;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 70vw;
+        min-width: 180px;
+        box-shadow: -2px 2px 10px rgba(0,0,0,0.2);
+        z-index: 1000;
+    }
+    nav ul.open {
+        display: flex;
+    }
+    .hamburger {
+        display: block;
+    }
+    nav {
+        width: 100%;
+        position: relative;
     }
 }
 
