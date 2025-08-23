@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://neuroharmonics.fr/sitemap.xml
