@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 languageToggle.textContent = 'FR';
                 elements.forEach(element => {
                     if (element.hasAttribute('data-en')) {
-                        element.textContent = element.getAttribute('data-en');
+                        element.innerHTML = element.getAttribute('data-en');
                     }
                 });
             } else {
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 languageToggle.textContent = 'EN';
                 elements.forEach(element => {
                     if (element.hasAttribute('data-fr')) {
-                        element.textContent = element.getAttribute('data-fr');
+                        element.innerHTML = element.getAttribute('data-fr');
                     }
                 });
             }
@@ -33,10 +33,39 @@ document.addEventListener('DOMContentLoaded', function() {
     if (hamburger && navUl) {
         hamburger.addEventListener('click', function() {
             navUl.classList.toggle('open');
+            if (navUl.classList.contains('open')) {
+                hamburger.innerHTML = '&times;';
+                document.body.style.overflow = 'hidden';
+            } else {
+                hamburger.innerHTML = '&#9776;';
+                document.body.style.overflow = '';
+            }
         });
         // Optionally close menu when clicking a link
         navUl.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => navUl.classList.remove('open'));
+            link.addEventListener('click', () => {
+                navUl.classList.remove('open');
+                hamburger.innerHTML = '&#9776;';
+                document.body.style.overflow = '';
+            });
         });
+    }
+
+    // --- Intersection Observer for Scroll Reveals ---
+    const revealElements = document.querySelectorAll('.scroll-reveal');
+    if (revealElements.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    // Optional: observer.unobserve(entry.target) to animate only once
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => observer.observe(el));
     }
 });

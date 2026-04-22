@@ -24,20 +24,19 @@
         <button id="language-toggle">EN</button>
     </header>
     <main>
-        <section class="hero">
-            <h2 data-fr="Bienvenue sur NeuroHarmonics" data-en="Welcome to NeuroHarmonics">Bienvenue sur NeuroHarmonics</h2>
-            <div class="image-container">
-                <img src="images/wave-image.jpg" alt="Ondes Sonores">
-            </div>
-            <div class="text-container">
-                <p data-fr="Optimisez vos états mentaux avec les battements binauraux. NeuroHarmonics est une application Android révolutionnaire qui génère des ondes sonores spécifiques pour induire des états cérébraux optimaux. Que vous souhaitiez améliorer votre sommeil, votre concentration ou votre créativité, notre technologie de battements binauraux vous accompagne." data-en="Optimize your mental states with binaural beats. NeuroHarmonics is a revolutionary Android application that generates specific sound waves to induce optimal brain states. Whether you want to improve your sleep, concentration, or creativity, our binaural beats technology supports you.">
-                    Optimisez vos états mentaux avec les battements binauraux. NeuroHarmonics est une application Android révolutionnaire qui génère des ondes sonores spécifiques pour induire des états cérébraux optimaux. Que vous souhaitiez améliorer votre sommeil, votre concentration ou votre créativité, notre technologie de battements binauraux vous accompagne.
-                </p>
+        <section class="hero" style="display: flex; justify-content: center; padding: 4rem 2rem;">
+            <div class="glass-card scroll-reveal" style="max-width: 800px; width: 100%; text-align: center;">
+                <h2 data-fr="Bienvenue sur NeuroHarmonics" data-en="Welcome to NeuroHarmonics" style="margin-bottom: 2rem; font-size: 2.5rem;">Bienvenue sur NeuroHarmonics</h2>
+                <div class="text-container" style="padding: 0; min-width: unset; flex: unset;">
+                    <p data-fr="Optimisez vos états mentaux avec les battements binauraux. NeuroHarmonics est une application Android révolutionnaire qui génère des ondes sonores spécifiques pour induire des états cérébraux optimaux. Que vous souhaitiez améliorer votre sommeil, votre concentration ou votre créativité, notre technologie de battements binauraux vous accompagne." data-en="Optimize your mental states with binaural beats. NeuroHarmonics is a revolutionary Android application that generates specific sound waves to induce optimal brain states. Whether you want to improve your sleep, concentration, or creativity, our binaural beats technology supports you." style="font-size: 1.2rem; line-height: 1.6; font-family: 'Montserrat', sans-serif;">
+                        Optimisez vos états mentaux avec les battements binauraux. NeuroHarmonics est une application Android révolutionnaire qui génère des ondes sonores spécifiques pour induire des états cérébraux optimaux. Que vous souhaitiez améliorer votre sommeil, votre concentration ou votre créativité, notre technologie de battements binauraux vous accompagne.
+                    </p>
+                </div>
             </div>
         </section>
-        <section class="features">
-            <div class="features-container">
-                <h2 data-fr="Fonctionnalités" data-en="Features">Fonctionnalités</h2>
+        <section class="features" style="display: flex; justify-content: center; gap: 2rem; padding: 2rem; align-items: stretch; flex-wrap: wrap;">
+            <div class="features-container glass-card scroll-reveal delay-100" style="flex: 1; min-width: 300px; max-width: 500px; margin: 0;">
+                <h2 data-fr="Fonctionnalités" data-en="Features" style="margin-bottom: 1.5rem;">Fonctionnalités</h2>
                 <ul>
                     <li data-fr="Ondes Delta pour un sommeil profond" data-en="Delta waves for deep sleep">Ondes Delta pour un sommeil profond</li>
                     <li data-fr="Ondes Theta pour la méditation" data-en="Theta waves for meditation">Ondes Theta pour la méditation</li>
@@ -46,13 +45,19 @@
                     <li data-fr="Ondes Gamma pour les processus créatifs" data-en="Gamma waves for creative processes">Ondes Gamma pour les processus créatifs</li>
                 </ul>
             </div>
-            <div class="image-container">
-                <img src="images/cinq-ondes.jpg" alt="Cinq Ondes">
+            <div class="image-container glass-card scroll-reveal delay-200" style="flex: 1; min-width: 300px; max-width: 500px; padding: 1rem; display: flex; align-items: center; justify-content: center; margin: 0;">
+                <img src="images/cinq-ondes.jpg" alt="Cinq Ondes" style="border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
             </div>
+        </section>
+        
+        <!-- Call to Action Section -->
+        <section class="cta-section scroll-reveal delay-300" style="text-align: center; padding: 2rem 1rem 5rem 1rem; display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem;">
+            <a href="battements-binauraux.html" class="cta-button cta-secondary" data-fr="En savoir plus" data-en="Learn more">En savoir plus</a>
+            <a href="application.html" class="cta-button cta-primary" data-fr="Télécharger l'App" data-en="Download the App">Télécharger l'App</a>
         </section>
     </main>
     <footer>
-        <p data-fr="© 2025 Javed NeuroHarmonics. Tous droits réservés. jawed_tahir@yahoo.fr" data-en="© 2025 Javed NeuroHarmonics. All rights reserved. jawed_tahir@yahoo.fr">© 2025 Javed NeuroHarmonics. Tous droits réservés. jawed_tahir@yahoo.fr</p>
+        <p data-fr="© 2025 Javed NeuroHarmonics. Tous droits réservés. <a href='https://javed.fr/contact.html' target='_blank' style='color: inherit; text-decoration: underline;'>Contactez-nous</a>" data-en="© 2025 Javed NeuroHarmonics. All rights reserved. <a href='https://javed.fr/contact.html' target='_blank' style='color: inherit; text-decoration: underline;'>Contact Us</a>">© 2025 Javed NeuroHarmonics. Tous droits réservés. <a href='https://javed.fr/contact.html' target='_blank' style='color: inherit; text-decoration: underline;'>Contactez-nous</a></p>
     </footer>
     <script src="js/script.js"></script>
 </body>

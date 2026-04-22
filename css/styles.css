@@ -9,14 +9,24 @@ body {
     font-family: 'Arial', sans-serif;
     background-color: #000;
     color: #fff;
+    background-image: url('../images/wave-image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Effet Parallax */
 }
 
 header {
-    background-color: #2196F3;
+    background-color: rgba(33, 150, 243, 0.7); /* Translucent Blue */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .logo {
@@ -181,11 +191,15 @@ nav ul li a {
 
 .features-container {
     background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     padding: 2rem;
     max-width: 80%;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
 .features ul {
@@ -256,25 +270,122 @@ footer {
     nav ul {
         display: none;
         flex-direction: column;
-        background: #2196F3;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        width: 70vw;
-        min-width: 180px;
-        box-shadow: -2px 2px 10px rgba(0,0,0,0.2);
+        justify-content: center;
+        align-items: center;
+        background: rgba(10, 10, 20, 0.90);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
         z-index: 1000;
+        margin: 0;
+        padding: 0;
     }
     nav ul.open {
         display: flex;
     }
+    nav ul li {
+        margin: 1.5rem 0;
+    }
+    nav ul li a {
+        background: transparent;
+        color: #fff;
+        font-size: 2rem;
+        font-family: 'Share Tech Mono', monospace;
+        text-transform: uppercase;
+        border-radius: 0;
+        padding: 0.5rem;
+        transition: color 0.3s ease;
+    }
+    nav ul li a:hover, nav ul li a:active {
+        color: #ffd600;
+        background: transparent;
+    }
     .hamburger {
         display: block;
+        position: fixed;
+        top: 1.2rem;
+        right: 1.5rem;
+        z-index: 1001;
     }
     nav {
-        width: 100%;
-        position: relative;
+        position: static;
     }
+}
+/* Glassmorphism Cards */
+.glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    padding: 2rem;
+    color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+}
+
+/* Scroll Reveal Animations */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Delay modifiers */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+
+/* Boutons d'Action (CTAs) */
+.cta-button {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    text-align: center;
+    cursor: pointer;
+}
+
+.cta-primary {
+    background-color: #ffd600;
+    color: #000;
+    box-shadow: 0 4px 15px rgba(255, 214, 0, 0.4);
+}
+
+.cta-primary:hover {
+    background-color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 214, 0, 0.6);
+}
+
+.cta-secondary {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
+}
+
+.cta-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
 }
 
 /* Import Share Tech Mono and Montserrat from Google Fonts */
