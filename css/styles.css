@@ -12,11 +12,13 @@ body {
     background-image: url('../images/wave-image.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Effet Parallax */
+    background-attachment: fixed;
+    /* Effet Parallax */
 }
 
 header {
-    background-color: rgba(33, 150, 243, 0.7); /* Translucent Blue */
+    background-color: rgba(33, 150, 243, 0.7);
+    /* Translucent Blue */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -62,13 +64,15 @@ nav ul li a {
     margin-left: 1rem;
 }
 
-.hero, .features {
+.hero,
+.features {
     display: flex;
     flex-wrap: wrap;
     padding: 2rem;
 }
 
-.hero h2, .features h2 {
+.hero h2,
+.features h2 {
     width: 100%;
     font-family: 'Share Tech Mono', monospace;
     text-align: center;
@@ -174,6 +178,7 @@ nav ul li a {
         flex-direction: column;
         gap: 1rem;
     }
+
     .privacy-flex-container .image-container,
     .privacy-flex-container .text-container {
         max-width: 100%;
@@ -245,7 +250,8 @@ footer {
         align-self: flex-end;
     }
 
-    .image-container, .text-container {
+    .image-container,
+    .text-container {
         min-width: 100%;
     }
 }
@@ -284,12 +290,15 @@ footer {
         margin: 0;
         padding: 0;
     }
+
     nav ul.open {
         display: flex;
     }
+
     nav ul li {
         margin: 1.5rem 0;
     }
+
     nav ul li a {
         background: transparent;
         color: #fff;
@@ -300,10 +309,13 @@ footer {
         padding: 0.5rem;
         transition: color 0.3s ease;
     }
-    nav ul li a:hover, nav ul li a:active {
+
+    nav ul li a:hover,
+    nav ul li a:active {
         color: #ffd600;
         background: transparent;
     }
+
     .hamburger {
         display: block;
         position: fixed;
@@ -311,10 +323,12 @@ footer {
         right: 1.5rem;
         z-index: 1001;
     }
+
     nav {
         position: static;
     }
 }
+
 /* Glassmorphism Cards */
 .glass-card {
     background: rgba(255, 255, 255, 0.1);
@@ -346,9 +360,17 @@ footer {
 }
 
 /* Delay modifiers */
-.delay-100 { transition-delay: 100ms; }
-.delay-200 { transition-delay: 200ms; }
-.delay-300 { transition-delay: 300ms; }
+.delay-100 {
+    transition-delay: 100ms;
+}
+
+.delay-200 {
+    transition-delay: 200ms;
+}
+
+.delay-300 {
+    transition-delay: 300ms;
+}
 
 /* Boutons d'Action (CTAs) */
 .cta-button {
@@ -386,6 +408,23 @@ footer {
 .cta-secondary:hover {
     background-color: rgba(255, 255, 255, 0.2);
     transform: translateY(-3px);
+}
+
+/* Google Play badge */
+.play-store-badge {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.play-store-badge:hover {
+    transform: translateY(-3px);
+}
+
+.play-store-badge img {
+    width: 80%;
+    height: auto;
+    max-width: 220px;
+    display: block;
 }
 
 /* Import Share Tech Mono and Montserrat from Google Fonts */

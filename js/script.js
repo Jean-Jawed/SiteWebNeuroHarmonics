@@ -1,32 +1,51 @@
 document.addEventListener('DOMContentLoaded', function() {
     const languageToggle = document.getElementById('language-toggle');
 
+    // Helper: applies a language to all language-aware elements on the page.
+    // Handles text content (data-fr / data-en) AND image swaps + aria/alt
+    // attributes (data-fr-src / data-en-src, data-fr-alt / data-en-alt,
+    // data-fr-aria / data-en-aria).
+    function applyLanguage(lang) {
+        document.documentElement.lang = lang;
+        languageToggle.textContent = lang === 'fr' ? 'EN' : 'FR';
+
+        // Text content
+        document.querySelectorAll('[data-fr], [data-en]').forEach(el => {
+            const value = el.getAttribute('data-' + lang);
+            if (value !== null) {
+                el.innerHTML = value;
+            }
+        });
+
+        // Image src swaps (e.g. Google Play badge in FR / EN)
+        document.querySelectorAll('[data-fr-src], [data-en-src]').forEach(el => {
+            const src = el.getAttribute('data-' + lang + '-src');
+            if (src) el.setAttribute('src', src);
+        });
+
+        // Alt text swaps
+        document.querySelectorAll('[data-fr-alt], [data-en-alt]').forEach(el => {
+            const alt = el.getAttribute('data-' + lang + '-alt');
+            if (alt) el.setAttribute('alt', alt);
+        });
+
+        // Aria-label swaps
+        document.querySelectorAll('[data-fr-aria], [data-en-aria]').forEach(el => {
+            const aria = el.getAttribute('data-' + lang + '-aria');
+            if (aria) el.setAttribute('aria-label', aria);
+        });
+    }
+
     if (languageToggle) {
         languageToggle.addEventListener('click', function() {
             const currentLanguage = document.documentElement.lang;
-            const elements = document.querySelectorAll('[data-fr], [data-en]');
-
-            if (currentLanguage === 'fr') {
-                document.documentElement.lang = 'en';
-                languageToggle.textContent = 'FR';
-                elements.forEach(element => {
-                    if (element.hasAttribute('data-en')) {
-                        element.innerHTML = element.getAttribute('data-en');
-                    }
-                });
-            } else {
-                document.documentElement.lang = 'fr';
-                languageToggle.textContent = 'EN';
-                elements.forEach(element => {
-                    if (element.hasAttribute('data-fr')) {
-                        element.innerHTML = element.getAttribute('data-fr');
-                    }
-                });
-            }
+            const newLanguage = currentLanguage === 'fr' ? 'en' : 'fr';
+            applyLanguage(newLanguage);
         });
     } else {
         console.error('Language toggle button not found');
     }
+
     // Hamburger menu
     const hamburger = document.querySelector('.hamburger');
     const navUl = document.querySelector('nav ul');
