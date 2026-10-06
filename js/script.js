@@ -1,90 +1,34 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const languageToggle = document.getElementById('language-toggle');
+// Bascule jour / nuit. Le thème est appliqué avant l'affichage par le petit
+// script inline du <head> ; ici on gère seulement le bouton.
+(function () {
+    var root = document.documentElement;
+    var button = document.querySelector('.theme-toggle');
+    if (!button) return;
 
-    // Helper: applies a language to all language-aware elements on the page.
-    // Handles text content (data-fr / data-en) AND image swaps + aria/alt
-    // attributes (data-fr-src / data-en-src, data-fr-alt / data-en-alt,
-    // data-fr-aria / data-en-aria).
-    function applyLanguage(lang) {
-        document.documentElement.lang = lang;
-        languageToggle.textContent = lang === 'fr' ? 'EN' : 'FR';
+    var isFr = root.lang === 'fr';
+    var labels = isFr
+        ? { dark: 'Nuit', light: 'Jour', toDark: 'Passer en mode nuit', toLight: 'Passer en mode jour' }
+        : { dark: 'Night', light: 'Day', toDark: 'Switch to night mode', toLight: 'Switch to day mode' };
 
-        // Text content
-        document.querySelectorAll('[data-fr], [data-en]').forEach(el => {
-            const value = el.getAttribute('data-' + lang);
-            if (value !== null) {
-                el.innerHTML = value;
-            }
-        });
-
-        // Image src swaps (e.g. Google Play badge in FR / EN)
-        document.querySelectorAll('[data-fr-src], [data-en-src]').forEach(el => {
-            const src = el.getAttribute('data-' + lang + '-src');
-            if (src) el.setAttribute('src', src);
-        });
-
-        // Alt text swaps
-        document.querySelectorAll('[data-fr-alt], [data-en-alt]').forEach(el => {
-            const alt = el.getAttribute('data-' + lang + '-alt');
-            if (alt) el.setAttribute('alt', alt);
-        });
-
-        // Aria-label swaps
-        document.querySelectorAll('[data-fr-aria], [data-en-aria]').forEach(el => {
-            const aria = el.getAttribute('data-' + lang + '-aria');
-            if (aria) el.setAttribute('aria-label', aria);
-        });
+    function currentTheme() {
+        var forced = root.getAttribute('data-theme');
+        if (forced) return forced;
+        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     }
 
-    if (languageToggle) {
-        languageToggle.addEventListener('click', function() {
-            const currentLanguage = document.documentElement.lang;
-            const newLanguage = currentLanguage === 'fr' ? 'en' : 'fr';
-            applyLanguage(newLanguage);
-        });
-    } else {
-        console.error('Language toggle button not found');
+    function render() {
+        var next = currentTheme() === 'dark' ? 'light' : 'dark';
+        button.textContent = labels[next];
+        button.setAttribute('aria-label', next === 'dark' ? labels.toDark : labels.toLight);
     }
 
-    // Hamburger menu
-    const hamburger = document.querySelector('.hamburger');
-    const navUl = document.querySelector('nav ul');
-    if (hamburger && navUl) {
-        hamburger.addEventListener('click', function() {
-            navUl.classList.toggle('open');
-            if (navUl.classList.contains('open')) {
-                hamburger.innerHTML = '&times;';
-                document.body.style.overflow = 'hidden';
-            } else {
-                hamburger.innerHTML = '&#9776;';
-                document.body.style.overflow = '';
-            }
-        });
-        // Optionally close menu when clicking a link
-        navUl.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navUl.classList.remove('open');
-                hamburger.innerHTML = '&#9776;';
-                document.body.style.overflow = '';
-            });
-        });
-    }
+    button.addEventListener('click', function () {
+        var next = currentTheme() === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+        render();
+    });
 
-    // --- Intersection Observer for Scroll Reveals ---
-    const revealElements = document.querySelectorAll('.scroll-reveal');
-    if (revealElements.length > 0) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    // Optional: observer.unobserve(entry.target) to animate only once
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
-
-        revealElements.forEach(el => observer.observe(el));
-    }
-});
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', render);
+    render();
+})();
